@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">HabariHub</string>
+    <string name="title_section1">Section 1</string>
+    <string name="title_section2">Section 2</string>
+    <string name="title_section3">Section 3</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="action_settings">Settings</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="dialog_warning_text">This feature is under development, but for the time being the FIRST results is likely what you need</string>
+    <string name="dialog_title">Add A News Source</string>
+    <string name="feed_search_query">Search Source</string>
+    <string name="search">Search</string>
+    <string name="cancel">Cancel</string>
+    <string name="station_picker_prompt">Select Radio Station</string>
+
+</resources>
