@@ -41,7 +41,6 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
 
     private final String LOG_TAG = ReadFragment.class.getSimpleName();
     private ArrayList<Source> newsSource;
-    private ListView listView;
     private ArrayList<RSSItem> itms = new ArrayList<RSSItem>();
 
     private OnFragmentInteractionListener mListener;
