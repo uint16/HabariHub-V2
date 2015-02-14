@@ -3,7 +3,9 @@ package damagination.com.habarihub.main;
 import android.app.Activity;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
+import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,9 +16,14 @@ import android.widget.ListView;
 import android.widget.TextView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import damagination.com.habarihub.R;
 import damagination.com.habarihub.database.SourcesDatabaseOpenHelper;
+import damagination.com.habarihub.rss.ItemsAdapter;
+import damagination.com.habarihub.rss.LoadNews;
+import damagination.com.habarihub.rss.RSSItem;
+import damagination.com.habarihub.rss.RSSReader;
 import damagination.com.habarihub.rss.Source;
 import damagination.com.habarihub.rss.SourceAdapter;
 
@@ -35,6 +42,7 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
     private final String LOG_TAG = ReadFragment.class.getSimpleName();
     private ArrayList<Source> newsSource;
     private ListView listView;
+    private ArrayList<RSSItem> itms = new ArrayList<RSSItem>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -72,8 +80,10 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
             }
         }.run();
 
-        mAdapter = new SourceAdapter(getActivity(),
-                android.R.layout.simple_list_item_1, newsSource);
+
+
+       // mAdapter = new ItemsAdapter(getActivity(),
+       //         android.R.layout.simple_list_item_1, itms);
 
 
     }
@@ -81,6 +91,10 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+
+        LoadNews test = new LoadNews(newsSource);
+        test.execute();
+
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         // Set the adapter
@@ -208,7 +222,8 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
 
             }
         }.run();
-        mAdapter = new SourceAdapter(getActivity(), android.R.layout.simple_list_item_1, newsSource);
+
+        mAdapter = new ItemsAdapter(getActivity(), android.R.layout.simple_list_item_1, itms);
         mListView.setAdapter(mAdapter);
         //mAdapter.notifyDataSetChanged();
 
@@ -225,4 +240,62 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
     }
 
 
+    public class LoadNews extends AsyncTask<ArrayList<RSSItem>, Void, ArrayList<RSSItem>> {
+
+        ArrayList<Source> sources;
+        ArrayList<RSSItem> items;
+
+        public LoadNews(ArrayList<Source> _sources) {
+            sources = _sources;
+            items = new ArrayList<RSSItem>();
+        }
+
+        @Override
+        protected ArrayList<RSSItem> doInBackground(ArrayList<RSSItem>... params) {
+
+            RSSReader reader = null;
+
+            for (int i = 0; i < sources.size(); i++) {
+                Log.i(LOG_TAG, "URL is :" + sources.get(i).getUrl());
+                reader = new RSSReader(sources.get(i).getUrl());
+                ArrayList<RSSItem> temp = reader.getRSSFeedItems();
+                for (int j = 0; j < temp.size(); j++) {
+                    items.add(temp.get(j));
+                }
+            }
+            return items;
+        }
+
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected void onProgressUpdate(Void... values) {
+            super.onProgressUpdate(values);
+        }
+
+        @Override
+        protected void onPostExecute(ArrayList<RSSItem> _items) {
+            super.onPostExecute(_items);
+            if (_items.size() != 0) {
+                itms = _items;
+                mAdapter = new ItemsAdapter(getActivity(), android.R.layout.simple_list_item_1, _items);
+            }
+
+        }
+
+        @Override
+        protected void onCancelled(ArrayList<RSSItem> strings) {
+            super.onCancelled(strings);
+        }
+
+        @Override
+        protected void onCancelled() {
+            super.onCancelled();
+        }
+
+    }
 }

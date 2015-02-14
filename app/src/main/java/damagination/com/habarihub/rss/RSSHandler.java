@@ -1,5 +1,7 @@
 package damagination.com.habarihub.rss;
 
+import android.util.Log;
+
 import org.xml.sax.Attributes;
 import org.xml.sax.SAXException;
 import org.xml.sax.helpers.DefaultHandler;
@@ -19,6 +21,7 @@ public class RSSHandler extends DefaultHandler {
     public RSSHandler() {
 
         rssFeedItems = new ArrayList<RSSItem>();
+        //rssFeedItem = new RSSItem();
 
 
     }
@@ -39,7 +42,7 @@ public class RSSHandler extends DefaultHandler {
         if (qName.equalsIgnoreCase(Constant.ITEM)) {
             //The first tag is item;create a new RSSFeedItem object
             //to hold the children of this tag
-            rssFeedItem = new RSSItem();
+           rssFeedItem = new RSSItem();
         } else if ((qName.equalsIgnoreCase(Constant.MEDIA_CONTENT)) ||
                 (qName.equalsIgnoreCase(Constant.MEDIA_THUMBNAIL)) ||
                 (qName.equalsIgnoreCase(Constant.IMAGE))) {
@@ -50,7 +53,7 @@ public class RSSHandler extends DefaultHandler {
             if (attributes.getValue(Constant.URL) != null) {
                 //if the url attribute is not equal to null
                 //get that url
-                rssFeedItem.setImageUrl(attributes.getValue(Constant.URL));
+               rssFeedItem.setImageUrl(attributes.getValue(Constant.URL));
             }
 
         }
