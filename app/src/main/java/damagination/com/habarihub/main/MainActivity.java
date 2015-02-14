@@ -1,28 +1,28 @@
 package damagination.com.habarihub.main;
 
-import java.util.Locale;
-
 import android.net.Uri;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.ActionBar;
+import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentPagerAdapter;
-import android.os.Bundle;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v4.view.ViewPager;
-import android.view.LayoutInflater;
+import android.support.v7.app.ActionBar;
+import android.support.v7.app.ActionBarActivity;
 import android.view.Menu;
 import android.view.MenuItem;
-import android.view.View;
-import android.view.ViewGroup;
+
+import java.util.Locale;
 
 import damagination.com.habarihub.R;
 import damagination.com.habarihub.radio.ListenFragment;
 import damagination.com.habarihub.rss.SubscriptionDialog;
 
 
-public class MainActivity extends ActionBarActivity implements WatchFragment.OnFragmentInteractionListener,ReadFragment.OnFragmentInteractionListener, ListenFragment.OnFragmentInteractionListener, ActionBar.TabListener {
+public class MainActivity extends ActionBarActivity implements WatchFragment.OnFragmentInteractionListener,
+        ReadFragment.OnFragmentInteractionListener,
+        ListenFragment.OnFragmentInteractionListener,
+        ActionBar.TabListener {
 
     /**
      * The {@link android.support.v4.view.PagerAdapter} that will provide
@@ -33,6 +33,7 @@ public class MainActivity extends ActionBarActivity implements WatchFragment.OnF
      * {@link android.support.v4.app.FragmentStatePagerAdapter}.
      */
     SectionsPagerAdapter mSectionsPagerAdapter;
+
 
     /**
      * The {@link ViewPager} that will host the section contents.
@@ -156,7 +157,7 @@ public class MainActivity extends ActionBarActivity implements WatchFragment.OnF
                     break;
                 case 2:
                     fragment = new ListenFragment();
-                   break;
+                    break;
                 default:
 
                     break;
@@ -188,18 +189,18 @@ public class MainActivity extends ActionBarActivity implements WatchFragment.OnF
 
     /**
      * A placeholder fragment containing a simple view.
-     */
+
     public static class PlaceholderFragment extends Fragment {
         /**
          * The fragment argument representing the section number for this
          * fragment.
-         */
+
         private static final String ARG_SECTION_NUMBER = "section_number";
 
         /**
          * Returns a new instance of this fragment for the given section
          * number.
-         */
+
         public static PlaceholderFragment newInstance(int sectionNumber) {
             PlaceholderFragment fragment = new PlaceholderFragment();
             Bundle args = new Bundle();
@@ -217,6 +218,6 @@ public class MainActivity extends ActionBarActivity implements WatchFragment.OnF
             View rootView = inflater.inflate(R.layout.fragment_main, container, false);
             return rootView;
         }
-    }
+    }*/
 
 }

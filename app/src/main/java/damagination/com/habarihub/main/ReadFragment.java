@@ -12,13 +12,10 @@ import android.widget.AdapterView;
 import android.widget.ListAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 
 import java.util.ArrayList;
 
 import damagination.com.habarihub.R;
-import damagination.com.habarihub.database.SourcesDatabase;
 import damagination.com.habarihub.database.SourcesDatabaseOpenHelper;
 import damagination.com.habarihub.rss.Source;
 import damagination.com.habarihub.rss.SourceAdapter;
@@ -32,7 +29,8 @@ import damagination.com.habarihub.rss.SourceAdapter;
  * Activities containing this fragment MUST implement the {@link OnFragmentInteractionListener}
  * interface.
  */
-public class ReadFragment extends android.support.v4.app.Fragment implements AbsListView.OnItemClickListener, AbsListView.OnItemLongClickListener {
+public class ReadFragment extends android.support.v4.app.Fragment implements
+        AbsListView.OnItemClickListener, AbsListView.OnItemLongClickListener {
 
     private final String LOG_TAG = ReadFragment.class.getSimpleName();
     private ArrayList<Source> newsSource;

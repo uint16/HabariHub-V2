@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- the theme applied to the application or activity -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.Light">
+               
+        <item name="android:actionBarTabStyle">@style/MyActionBarTabs</item>
+             
+ <!-- Support library compatibility -->
+               
+        <item name="actionBarTabStyle">@style/MyActionBarTabs</item>
+        <item name="android:actionBarStyle">@style/MyActionBar</item>
+        <item name="actionBarStyle">@style/MyActionBar</item>
+        <item name="android:actionBarTabTextStyle">@style/MyActionBarTabText</item>
+        <item name="actionBarTabTextStyle">@style/MyActionBarTabText</item>
+       <item name="android:actionOverflowButtonStyle">@style/MyActionBarOverflow</item>
+        <item name="actionOverflowButtonStyle">@style/MyActionBarOverflow</item>
+    </style>
+
+    <!-- ActionBar tabs styles -->
+
+    <style name="MyActionBarTabs" parent="@style/Widget.AppCompat.Light.ActionBar.TabView">
+             
+                                                                          <!-- tab indicator -->
+               
+        <item name="android:background">@drawable/tab_indicator_ab_example</item>
+             
+                                                                          <!-- Support library compatibility -->
+               
+        <item name="background">@drawable/tab_indicator_ab_example</item>
+    </style>
+
+    <style name="MyActionBar" parent="@style/Widget.AppCompat.Light.ActionBar.Solid">
+        <item name="android:background">@drawable/action_bar_bg</item>
+                                <!-- Support library compatibility -->
+               
+        <item name="background">@drawable/action_bar_bg</item>
+        <item name="android:titleTextStyle">@style/MyActionBarText</item>
+        <item name="titleTextStyle">@style/MyActionBarText</item>
+        <item name="android:backgroundStacked">@drawable/ab_stacked_solid_example</item>
+        <item name="android:backgroundSplit">@drawable/tab_selected_pressed_example</item>
+        <item name="backgroundStacked">@drawable/ab_stacked_solid_example</item>
+        <item name="backgroundSplit">@drawable/tab_selected_pressed_example</item>
+    </style>
+
+    <!-- action bar tab text style -->
+
+    <style name="MyActionBarTabText" parent="@style/Widget.AppCompat.Light.ActionBar.TabText.Inverse">
+        <item name="android:textColor">#ffffff</item>
+               
+    </style>
+
+    <!-- action bar text style -->
+
+    <style name="MyActionBarText" parent="@style/TextAppearance.AppCompat.Widget.ActionBar.Title">
+        <item name="android:textColor">#ffffff</item>
+               
+    </style>
+
+   <style name="MyActionBarOverflow" parent="@style/Widget.AppCompat.ActionButton.Overflow">
+        <item name="android:src">@drawable/ic_action_overflow</item>
+           
+    </style>
+
+    <style name="SplashTheme" parent="@style/Theme.AppCompat.Light">
+
+        <item name="android:windowFullscreen">true</item>
+        <item name="android:windowNoTitle">true</item>
+
+
+    </style>
+
+</resources>
