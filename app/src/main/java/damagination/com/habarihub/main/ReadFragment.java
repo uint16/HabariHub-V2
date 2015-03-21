@@ -81,6 +81,8 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
 
 
 
+        LoadNews test = new LoadNews(newsSource);
+        test.execute();
        // mAdapter = new ItemsAdapter(getActivity(),
        //         android.R.layout.simple_list_item_1, itms);
 
@@ -91,14 +93,14 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
 
-        LoadNews test = new LoadNews(newsSource);
-        test.execute();
 
         View view = inflater.inflate(R.layout.fragment_item_list, container, false);
 
         // Set the adapter
         mListView = (AbsListView) view.findViewById(android.R.id.list);
-        ((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        //((AdapterView<ListAdapter>) mListView).setAdapter(mAdapter);
+        mAdapter = new ItemsAdapter(getActivity(), android.R.layout.simple_list_item_1, itms);
+        mListView.setAdapter(mAdapter);
 
         // Set OnItemClickListener so we can be notified on item clicks
         mListView.setOnItemClickListener(this);
@@ -132,7 +134,7 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-            mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+           // mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
 
         }
     }
@@ -282,6 +284,7 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
             if (_items.size() != 0) {
                 itms = _items;
                 mAdapter = new ItemsAdapter(getActivity(), android.R.layout.simple_list_item_1, _items);
+                mListView.setAdapter(mAdapter);
             }
 
         }
