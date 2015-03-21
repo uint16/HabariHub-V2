@@ -159,17 +159,14 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
         final int itemId = item.get_id();
         final SourcesDatabaseOpenHelper dbHelper = new SourcesDatabaseOpenHelper(getActivity());
 
-        String[] tmp = {"Delete", "Favorite", "Move to Watch"};
+        String[] tmp = {"Share", "Favorite"};
         AlertDialog.Builder builder = new AlertDialog.Builder(getActivity());
         builder.setTitle("Action")
                 .setItems(tmp, new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         if(which == 0){
-                            dbHelper.deleteRead(itemId);
-                            onResume();
-                        } else if(which == 1){
 
-                        } else if(which == 2) {
+                        } else if(which == 1){
 
                         }
                     }
