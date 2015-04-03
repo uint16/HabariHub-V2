@@ -39,11 +39,17 @@ import damagination.com.habarihub.rss.SourceAdapter;
 public class ReadFragment extends android.support.v4.app.Fragment implements
         AbsListView.OnItemClickListener, AbsListView.OnItemLongClickListener {
 
+
     private final String LOG_TAG = ReadFragment.class.getSimpleName();
     private ArrayList<Source> newsSource;
     private ArrayList<RSSItem> itms = new ArrayList<RSSItem>();
 
-    private OnFragmentInteractionListener mListener;
+    private onHeadlineSelectedListener mListener;
+    public interface onHeadlineSelectedListener{
+
+        public void onArticleSelectedListener(int position);
+
+    }
 
     /**
      * The fragment's ListView/GridView.
@@ -115,7 +121,7 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
     public void onAttach(Activity activity) {
         super.onAttach(activity);
         try {
-            mListener = (OnFragmentInteractionListener) activity;
+            mListener = (onHeadlineSelectedListener) activity;
         } catch (ClassCastException e) {
             throw new ClassCastException(activity.toString()
                     + " must implement OnFragmentInteractionListener");
@@ -134,7 +140,7 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
         if (null != mListener) {
             // Notify the active callbacks interface (the activity, if the
             // fragment is attached to one) that an item has been selected.
-           // mListener.onFragmentInteraction(DummyContent.ITEMS.get(position).id);
+            mListener.onArticleSelectedListener(position);
 
         }
     }
@@ -251,15 +257,17 @@ public class ReadFragment extends android.support.v4.app.Fragment implements
         @Override
         protected ArrayList<RSSItem> doInBackground(ArrayList<RSSItem>... params) {
 
-            RSSReader reader = null;
+            //RSSReader reader = null;
+            Log.i(LOG_TAG, "NUMBER OF NEWS SOURCES: " + sources.size());
 
             for (int i = 0; i < sources.size(); i++) {
-                Log.i(LOG_TAG, "URL is :" + sources.get(i).getUrl());
-                reader = new RSSReader(sources.get(i).getUrl());
+                Log.i(LOG_TAG, "LOADING FEEDS FROM: " + sources.get(i).getUrl());
+                RSSReader reader = new RSSReader(sources.get(i).getUrl());
                 ArrayList<RSSItem> temp = reader.getRSSFeedItems();
                 for (int j = 0; j < temp.size(); j++) {
                     items.add(temp.get(j));
                 }
+                temp.clear();
             }
             return items;
         }

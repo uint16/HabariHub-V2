@@ -123,8 +123,6 @@ public class SourcesDatabaseOpenHelper extends SQLiteOpenHelper {
                 // Adding contact to list
                 itemList.add(item);
 
-                Log.i(LOG_TAG, "blog added");
-
             } while (cursor.moveToNext());
 
         }

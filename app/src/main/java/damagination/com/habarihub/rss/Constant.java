@@ -6,7 +6,8 @@ package damagination.com.habarihub.rss;
 
     public interface Constant {
 
-        public static final  String ITEM="item";
+        public static final String ENTRY="entry";
+        public static final String ITEM="item";
         public static final String TITLE="title";
         public static final String DESCRIPTION="description";
         public static final String POST_URL="link";

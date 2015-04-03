@@ -19,7 +19,7 @@ import damagination.com.habarihub.rss.SubscriptionDialog;
 
 
 public class MainActivity extends ActionBarActivity implements WatchFragment.OnFragmentInteractionListener,
-        ReadFragment.OnFragmentInteractionListener,
+        ReadFragment.onHeadlineSelectedListener,
         ListenFragment.OnFragmentInteractionListener,
         ActionBar.TabListener {
 
@@ -129,6 +129,14 @@ public class MainActivity extends ActionBarActivity implements WatchFragment.OnF
 
     @Override
     public void onFragmentInteraction(Uri uri) {
+
+    }
+
+    @Override
+    public void onArticleSelectedListener(int position) {
+
+       // ArticleFragment articleFrag = (ArticleFragment)
+        //        getSupportFragmentManager().findFragmentById(R.id.article_fragment);
 
     }
 

@@ -39,7 +39,7 @@ public class RSSHandler extends DefaultHandler {
 
         //instantiate a builder since we are at the beginning of the tag
         builder = new StringBuilder();
-        if (qName.equalsIgnoreCase(Constant.ITEM)) {
+        if (qName.equalsIgnoreCase(Constant.ITEM) || qName.equalsIgnoreCase(Constant.ENTRY)) {
             //The first tag is item;create a new RSSFeedItem object
             //to hold the children of this tag
            rssFeedItem = new RSSItem();
@@ -76,7 +76,7 @@ public class RSSHandler extends DefaultHandler {
 
         try {
 
-            if (qName.equalsIgnoreCase(Constant.ITEM)) {
+            if (qName.equalsIgnoreCase(Constant.ITEM) || qName.equalsIgnoreCase(Constant.ENTRY)) {
                 //It is the end of the item tag
                 //add the item to the list of the rss feed items
                 //set the rss feed item to null
@@ -110,7 +110,7 @@ public class RSSHandler extends DefaultHandler {
 
         }catch (Exception e){
 
-            e.printStackTrace();
+            e.getMessage();
 
         }
     }
